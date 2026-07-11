@@ -1,0 +1,128 @@
+{
+  "exampleMazeObjects": [
+    {
+      "id": "maze-001",
+      "seed": 918273645,
+      "eggName": "Basic",
+      "rarity": "Common",
+      "mutation": "None",
+      "difficulty": "Easy",
+      "timerSeconds": 45,
+      "potentialBaseCoins": 10,
+      "coinsIfCompletedWithTimeRemaining": { "timeRemaining": 40, "coinsAwarded": 50 }
+    },
+    {
+      "id": "maze-002",
+      "seed": 555000111,
+      "eggName": "Gold",
+      "rarity": "Epic",
+      "mutation": "Gold",
+      "difficulty": "Hard",
+      "timerSeconds": 65,
+      "potentialBaseCoins": 113,
+      "coinsIfCompletedWithTimeRemaining": { "timeRemaining": 30, "coinsAwarded": 143 }
+    },
+    {
+      "id": "maze-003",
+      "seed": 42042042,
+      "eggName": "Diamond",
+      "rarity": "Legendary",
+      "mutation": "Diamond",
+      "difficulty": "Hard",
+      "timerSeconds": 60,
+      "potentialBaseCoins": 200,
+      "coinsIfCompletedWithTimeRemaining": { "timeRemaining": 15, "coinsAwarded": 215 }
+    },
+    {
+      "id": "maze-004",
+      "seed": 987654321,
+      "eggName": "Emerald",
+      "rarity": "Mythic",
+      "mutation": "Emerald",
+      "difficulty": "Extreme",
+      "timerSeconds": 70,
+      "potentialBaseCoins": 900,
+      "coinsIfCompletedWithTimeRemaining": { "timeRemaining": 50, "coinsAwarded": 950 }
+    }
+  ],
+  "exampleEggObjects": [
+    {
+      "transactionId": 1,
+      "playerId": "Player_123",
+      "eggName": "Basic",
+      "costPaid": 0,
+      "wasFreeFirstEgg": true,
+      "resultingMazeId": "maze-001",
+      "timestamp": "2026-07-11T09:00:00Z"
+    },
+    {
+      "transactionId": 2,
+      "playerId": "Player_123",
+      "eggName": "Gold",
+      "costPaid": 1500,
+      "wasFreeFirstEgg": false,
+      "resultingMazeId": "maze-002",
+      "timestamp": "2026-07-11T09:45:00Z"
+    },
+    {
+      "transactionId": 3,
+      "playerId": "Player_123",
+      "eggName": "Diamond",
+      "costPaid": 5000,
+      "wasFreeFirstEgg": false,
+      "resultingMazeId": "maze-003",
+      "timestamp": "2026-07-11T10:20:00Z"
+    },
+    {
+      "transactionId": 4,
+      "playerId": "Player_123",
+      "eggName": "Emerald",
+      "costPaid": 15000,
+      "wasFreeFirstEgg": false,
+      "resultingMazeId": "maze-004",
+      "timestamp": "2026-07-11T11:05:00Z"
+    }
+  ],
+  "examplePlayerProgression": {
+    "playerId": "Player_123",
+    "steps": [
+      {
+        "step": 0,
+        "action": "Account created",
+        "coinsAfter": 0,
+        "hasReceivedFreeEgg": false,
+        "inventoryAfter": []
+      },
+      {
+        "step": 1,
+        "action": "Open free Basic Egg",
+        "formulaNote": "cost = 0 (freeFirstEgg)",
+        "coinsAfter": 0,
+        "hasReceivedFreeEgg": true,
+        "inventoryAfter": ["maze-A (Common/None/Easy, timer 45s, potential 10)"]
+      },
+      {
+        "step": 2,
+        "action": "Complete maze-A with 40s remaining",
+        "formulaNote": "Coins = (10 * 1.0 * 1.0) + 40 = 50",
+        "coinsAfter": 50,
+        "inventoryAfter": []
+      },
+      {
+        "step": 3,
+        "action": "Buy Basic Egg (cost 50)",
+        "formulaNote": "no longer free; cost deducted in full",
+        "coinsAfter": 0,
+        "inventoryAfter": ["maze-B (Uncommon/None/Medium, timer 60s, potential 28)"]
+      },
+      {
+        "step": 4,
+        "action": "Complete maze-B with 50s remaining",
+        "formulaNote": "Coins = (25 * 1.1 * 1.0) + 50 = 77.5 -> rounds to 78",
+        "coinsAfter": 78,
+        "inventoryAfter": []
+      }
+    ],
+    "note": "Illustrative only -- shows the coin formula applied twice in sequence. Reaching a Bronze Egg (150 coins) or higher simply repeats this loop; see DEVELOPER_NOTES.md for balancing guidance on grind pacing."
+  }
+}
